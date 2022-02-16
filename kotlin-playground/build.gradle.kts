@@ -1,9 +1,9 @@
 plugins {
+    java
     kotlin("jvm") version "1.4.31"
 }
 
-group = "ac.weekly"
-version = "1.0-SNAPSHOT"
+version = "unspecified"
 
 repositories {
     mavenCentral()
@@ -11,5 +11,5 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib"))
-    implementation(kotlin("script-runtime"))
+    testCompile("junit", "junit", "4.12")
 }
