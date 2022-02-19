@@ -1,15 +1,24 @@
 # kotlin-springboot-101
 
 ## 코틀린 예제코드 모음
+
 * kotlin-practice Branch: [바로가기](https://github.com/weekly-academy/kotlin-springboot-101/tree/kotlin-practice)
 
-## 🗣 피드백은 언제나 긍정적으로 받아들이자       
+## 기타 팁
+
+* [객체지향 생활 체조 원칙](./reference/객체지향생활체조원칙.md)
+* [클린 코드](./reference/cleancode)
+* [협력하는 객체들의 공동체](./reference/objectOrientedProgramming.md)
+* [IntelliJ에 git bash 연결하기](https://toma0912.tistory.com/92)
+
+## 🗣 피드백은 언제나 긍정적으로 받아들이자
+
 **사람 마다 가지고 있는 지식과 관점은 다를 수 밖에 없다.**       
 누군가는 어떤 내용에 대해 많이 배웠을 수도 있고,              
 누군가는 처음 들어본 내용일 수도 있다.             
 내가 부족한 사람이라면 많이 배운 사람을 통해 성장을 해야한다.      
-피드백은 나를 성장시켜주는 가장 큰 촉진제이니까 **긍정적으로 생각하자**            
-            
+피드백은 나를 성장시켜주는 가장 큰 촉진제이니까 **긍정적으로 생각하자**
+
 **+추가로**      
 피드백 해주는 사람 입장에서도 잘못된 것을 지적하는 것이 아니라      
 좀 더 나은 방법을 **공유** 한다는 마음가짐으로 말을 하자.    
