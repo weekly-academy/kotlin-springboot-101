@@ -39,4 +39,32 @@ class EnvironmentTest {
 
         Assertions.assertEquals(true, actual)
     }
+
+    @Test
+    fun `5글자로 이루어진 단어를 입력할 수 있다`() {
+        val environment = Environment()
+
+        val actual = environment.input("apple")
+
+        Assertions.assertEquals(true, actual)
+    }
+
+    @Test
+    fun `4글자로 이루어진 단어는 입력할 수 없다`() {
+        val environment = Environment()
+
+        val actual = environment.input("abcd")
+
+        Assertions.assertEquals(false, actual)
+    }
+
+    @Test
+    fun `6글자로 이루어진 단어는 입력할 수 없다`() {
+        val environment = Environment()
+
+        val actual = environment.input("abcdef")
+
+        Assertions.assertEquals(false, actual)
+
+    }
 }

@@ -15,6 +15,8 @@ class Environment {
         tryCount += 1
     }
 
+    fun input(userInput: String) = userInput.length == 5
+
     companion object {
         private const val GAME_OVER_TRY_COUNT = 6L
     }
