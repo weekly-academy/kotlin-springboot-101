@@ -1,3 +1,4 @@
-fun main(){
-    println("hello, Academy")
+fun main() {
+    println("hi")
 }
+
