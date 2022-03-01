@@ -10,8 +10,10 @@ class WordComparator {
     }
 
     fun yellowLetters(user: String, system: String): List<Char> {
-        return system.toList().filterIndexed { index, c ->
-            user[index] == c
+        return user.toList().flatMapIndexed { userIndex, userChar ->
+            system.toList().filterIndexed { systemIndex, systemChar ->
+                systemIndex != userIndex && userChar == systemChar
+            }
         }
     }
 
