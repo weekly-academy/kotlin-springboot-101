@@ -1,7 +1,7 @@
 package domain
 
+import domain.CompareStatus.*
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
 /**
@@ -15,69 +15,37 @@ class WordComparatorTest {
         val comparator = WordComparator()
 
         // when
-        val actual = comparator.isEquals("apple", "apple")
+        val actual = comparator.compare("apple", "apple")
+        // CORRECT, ABSENT, NONE
 
         // then
-        Assertions.assertEquals(true, actual)
+        assertThat(actual).containsExactly(CORRECT, CORRECT, CORRECT, CORRECT, CORRECT)
     }
 
     @Test
-    fun `입력한 단어의 글자 중에서 정답 단어에 포함되고 위치가 같은 글자를 찾을 수 있다`() {
+    fun `정답 단어에 입력한 단어의 글자가 포함되고 위치가 같지 않으면 ABSENT 를 반환한다`() {
         // given
         val comparator = WordComparator()
 
         // when
-        val actual = comparator.greenLetters("apple", "april")
+        val actual = comparator.compare("apple", "april")
+        // CORRECT, ABSENT, NONE
 
         // then
-        assertThat(actual).containsExactly('a', 'p')
+        assertThat(actual[2]).isEqualTo(ABSENT)
+        assertThat(actual[3]).isEqualTo(ABSENT)
     }
 
     @Test
-    fun `입력한 단어의 글자 중에서 정답 단어에 포함되지만 위치가 같지 않은 글자를 찾을 수 있다`() {
+    fun `정답 단어에 입력한 단어의 글자가 포함되지 않으면 NONE 을 반환한다`() {
         // given
         val comparator = WordComparator()
 
         // when
-        val actual = comparator.yellowLetters("april", "apple")
+        val actual = comparator.compare("apple", "april")
+        // CORRECT, ABSENT, NONE
 
         // then
-        assertThat(actual).containsExactly('p', 'l')
-    }
-
-    @Test
-    fun `입력한 단어의 글자 중에서 정답 단어에 포함되지만 위치가 같지 않은 글자를 찾을 수 있다2`() {
-        // given
-        val comparator = WordComparator()
-
-        // when
-        val actual = comparator.yellowLetters("apple", "april")
-
-        // then
-        assertThat(actual).containsExactly('p', 'l')
-    }
-
-    @Test
-    fun `입력한 단어의 글자 중에서 정답 단어에서 포함되지 않는 글자를 찾을 수 있다`() {
-        // given
-        val comparator = WordComparator()
-
-        // when
-        val actual = comparator.grayLetters("apple", "april")
-
-        // then
-        assertThat(actual).containsExactly('e')
-    }
-
-    @Test
-    fun `입력한 단어의 글자 중에서 정답 단어에서 포함되지 않는 글자를 찾을 수 있다2`() {
-        // given
-        val comparator = WordComparator()
-
-        // when
-        val actual = comparator.grayLetters("april", "apple")
-
-        // then
-        assertThat(actual).containsExactly('r', 'i')
+        assertThat(actual[4]).isEqualTo(NONE)
     }
 }
