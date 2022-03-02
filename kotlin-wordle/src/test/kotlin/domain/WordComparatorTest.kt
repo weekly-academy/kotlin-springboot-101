@@ -1,5 +1,6 @@
 package domain
 
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
@@ -17,36 +18,32 @@ class WordComparatorTest {
     }
 
     @Test
-    fun `입력한 단어의 글자 중에서 정답 단어에 포함되고 위치가 같은 글자를 찾을 수 있다`() {
+    fun `입력한 단어의 글자 중에서 정답 단어에 포함되고 위치가 같으면 초록색으로 표시한다`() {
         //given
         val comparator = WordComparator()
         //when
-        val actual = comparator.greenLetters("apple","april")
+        val actual = comparator.greenLetters("apple", "april")
         //then
-        org.assertj.core.api.Assertions.assertThat(actual).containsExactly('a','p')
-
-
+        assertThat(actual).containsExactly('a', 'p')
     }
 
     @Test
-    fun `입력한 단어의 글자 중에서 정답 단어에 포함되지만 위치가 같지 않은 글자를 찾을 수 있다`() {
+    fun `입력한 단어의 글자 중에서 정답단어에 포함되지만 위치가 같지 않으면 노랑색으로 표시한다`() {
         //given
         val comparator = WordComparator()
         //when
-        val actual = comparator.yellowLetters("apple","april")
+        val actual = comparator.yellowLetters("apple", "april")
         //then
-        org.assertj.core.api.Assertions.assertThat(actual).containsExactly('p','l')
-
+        assertThat(actual).containsExactly('p', 'l')
     }
 
     @Test
-    fun `정답 단어에 입력한 단어의 글자가 포함되지 않으면 회색을 표시한다`() {
+    fun `입력한 단어의 글자중에서 정답단어에 포함되지 않으면 회색으로 표시한다`() {
         val comparator = WordComparator()
         //when
-        val actual = comparator.grayLetters("qwert","asdfg")
+        val actual = comparator.grayLetters("qwert", "asdfg")
         //then
-        org.assertj.core.api.Assertions.assertThat(actual).containsExactly()
-
-
+        assertThat(actual).containsExactly()
     }
+
 }
