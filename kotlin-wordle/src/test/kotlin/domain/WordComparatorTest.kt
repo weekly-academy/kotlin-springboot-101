@@ -8,42 +8,41 @@ class WordComparatorTest {
 
     @Test
     fun `입력한 단어와 정답 단어가 완전히 일치하면 정답이다`() {
-        //given
+        // given
         val comparator = WordComparator()
-        //when
-        val actual = comparator.isEquals("abcde", "abcde")
-        //then
-        Assertions.assertEquals(true, actual)
 
+        // when
+        val actual = comparator.compare("apple", "apple")
+        // CORRECT, ABSENT, NONE
+
+        // then
+        assertThat(actual).containsExactly(CORRECT, CORRECT, CORRECT, CORRECT, CORRECT)
     }
 
     @Test
-    fun `입력한 단어의 글자 중에서 정답 단어에 포함되고 위치가 같으면 초록색으로 표시한다`() {
-        //given
+    fun `정답 단어에 입력한 단어의 글자가 포함되고 위치가 같지 않으면 ABSENT 를 반환한다`() {
+        // given
         val comparator = WordComparator()
-        //when
-        val actual = comparator.greenLetters("apple", "april")
-        //then
-        assertThat(actual).containsExactly('a', 'p')
+
+        // when
+        val actual = comparator.compare("apple", "april")
+        // CORRECT, ABSENT, NONE
+
+        // then
+        assertThat(actual[2]).isEqualTo(ABSENT)
+        assertThat(actual[3]).isEqualTo(ABSENT)
     }
 
     @Test
-    fun `입력한 단어의 글자 중에서 정답단어에 포함되지만 위치가 같지 않으면 노랑색으로 표시한다`() {
-        //given
+    fun `정답 단어에 입력한 단어의 글자가 포함되지 않으면 NONE 을 반환한다`() {
+        // given
         val comparator = WordComparator()
-        //when
-        val actual = comparator.yellowLetters("apple", "april")
-        //then
-        assertThat(actual).containsExactly('p', 'l')
-    }
 
-    @Test
-    fun `입력한 단어의 글자중에서 정답단어에 포함되지 않으면 회색으로 표시한다`() {
-        val comparator = WordComparator()
-        //when
-        val actual = comparator.grayLetters("qwert", "asdfg")
-        //then
-        assertThat(actual).containsExactly()
-    }
+        // when
+        val actual = comparator.compare("apple", "april")
+        // CORRECT, ABSENT, NONE
 
+        // then
+        assertThat(actual[4]).isEqualTo(NONE)
+    }
 }
