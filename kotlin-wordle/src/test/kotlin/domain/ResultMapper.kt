@@ -1,5 +1,8 @@
 package domain
 
+import domain.CompareStatus.*
+import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Test
 import java.lang.IllegalArgumentException
 
 class ResultMapperTest {
